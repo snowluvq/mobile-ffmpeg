@@ -1,16 +1,23 @@
 Pod::Spec.new do |s|
   s.name         = "mobile-ffmpeg-full"
-  s.version      = "4.4" # Thay bằng phiên bản của bạn
+  s.version      = "4.4" # Cập nhật version thành 4.4
   s.summary      = "FFmpeg for iOS and Android"
   s.description  = <<-DESC
-                   Mobile FFmpeg full build for iOS and Android.
+                   Mobile FFmpeg full build for iOS and Android. Provides a complete set of FFmpeg libraries compiled as xcframeworks for media processing.
                    DESC
   s.homepage     = "https://github.com/snowluvq/mobile-ffmpeg"
   s.license      = { :type => "LGPL-2.1", :file => "LICENSE" }
-  s.author       = { "snbowluvq" => "nh.quan56@gmail.com" }
+  s.author       = { "QuanNH" => "nh.quan56@gmail.com" }
   s.platform     = :ios, "12.0"
   s.source       = { :git => "https://github.com/snowluvq/mobile-ffmpeg.git", :tag => s.version.to_s }
-  s.source_files = "./mobile-ffmpeg-full/**/*.{h,m,a,xcframework}"
-  s.vendored_libraries = "lib/*.a" # Nếu có thư viện nhị phân
-  s.pod_target_xcconfig = { "VALID_ARCHS" => "arm64 x86_64" }
+
+  # Sử dụng glob pattern để bao quát tất cả .xcframework
+  s.vendored_frameworks = "*.xcframework"
+
+  # Cấu hình kiến trúc và yêu cầu
+  s.pod_target_xcconfig = {
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]" => "i386",
+    "VALID_ARCHS" => "arm64 armv7 x86_64"
+  }
+  s.requires_arc = false
 end
