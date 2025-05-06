@@ -9,10 +9,8 @@ Pod::Spec.new do |s|
   s.license      = { :type => "LGPL-2.1", :file => "LICENSE" }
   s.author       = { "QuanNH" => "nh.quan56@gmail.com" }
   s.platform     = :ios, "12.0"
-  s.source       = { :git => "https://github.com/snowluvq/mobile-ffmpeg.git", :tag => s.version.to_s }
-
-  # Sử dụng glob pattern để bao quát tất cả .xcframework
-  s.vendored_frameworks = "*.xcframework"
+  s.source       = { :git => "https://github.com/snowluvq/mobile-ffmpeg.git" }
+  s.vendored_frameworks = "mobile-ffmpeg-full/*.xcframework"
 
   # Cấu hình kiến trúc và yêu cầu
   s.pod_target_xcconfig = {
