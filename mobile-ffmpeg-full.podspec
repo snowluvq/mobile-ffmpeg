@@ -12,7 +12,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/snowluvq/mobile-ffmpeg.git", :tag => s.version.to_s }
 
   # Sử dụng glob pattern để bao quát tất cả .xcframework
-  s.vendored_frameworks = "*.xcframework"
+  s.vendored_frameworks = "mobile-ffmpeg-full/*.xcframework"
+  s.source_files = "mobile-ffmpeg-full/**/*"
 
   # Cấu hình kiến trúc và yêu cầu
   s.pod_target_xcconfig = {
